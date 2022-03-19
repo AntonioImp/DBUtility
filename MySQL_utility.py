@@ -290,8 +290,6 @@ if __name__ == "__main__":
 	print("Start:", start)
 	logger.debug("Start: {0}".format(start))
 
-	tableToCheck = ["table1", "table2"]
-
 	check = []
 	tableToUpdated = {}
 
@@ -321,7 +319,8 @@ if __name__ == "__main__":
 		logger=logger
 	)
 
-	masterDBForAdd = config_parser['db']['MASTER_DB'] #This key -> 'remote' or 'local'
+	tableToCheck = config_parser['db']['TABLE_TO_CHECK'].split(',') #This key contains list of table to check splitted by ',' without space
+	masterDBForAdd = config_parser['db']['MASTER_DB'] #This key contains 'remote' or 'local'
 
 	for table in tableToCheck:
 		localRow = localDB.countRow(table)
